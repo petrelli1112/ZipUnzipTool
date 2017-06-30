@@ -122,7 +122,7 @@ bool KArchive::createDevice(QIODevice::OpenMode mode)
             //qDebug() << "Writing to a file using QSaveFile";
             d->saveFile = new QSaveFile(d->fileName);
             if (!d->saveFile->open(QIODevice::WriteOnly)) {
-                //qWarning() << "QSaveFile creation for " << d->fileName << " failed, " << d->saveFile->errorString();
+                qWarning() << "QSaveFile creation for " << d->fileName << " failed, " << d->saveFile->errorString();
                 delete d->saveFile;
                 d->saveFile = 0;
                 return false;

@@ -16,9 +16,11 @@ TEMPLATE = app
 
 include($$PWD/zipunzip.pri)
 
-SOURCES += main.cpp \
-    zipunzip/zipunzip.cpp
+INCLUDEPATH += $$PWD
+
+SOURCES += $$PWD/main.cpp \
+    $$PWD/zipunzip/zipunzip.cpp
 
 HEADERS += \
-    zipunzip/zipunzip.h
+    $$PWD/zipunzip/zipunzip.h
 

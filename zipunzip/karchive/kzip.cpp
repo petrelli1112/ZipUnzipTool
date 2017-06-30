@@ -419,6 +419,7 @@ bool KZip::openArchive(QIODevice::OpenMode mode)
             // read fileName
             Q_ASSERT(namelen > 0);
             QByteArray fileName = dev->read(namelen);
+            qDebug() << "archive fileName: " << QString(fileName);
             if (fileName.size() < namelen) {
                 //qWarning() << "Invalid ZIP file. Name not completely read (#2)";
                 return false;
@@ -597,9 +598,10 @@ bool KZip::openArchive(QIODevice::OpenMode mode)
 
             ParseFileInfo pfi = pfi_map.value(bufferName, ParseFileInfo());
 
-            QString name(QFile::decodeName(bufferName));
+//            QString name(QFile::decodeName(bufferName));
+            QString name((bufferName));
 
-            //qDebug() << "name: " << name;
+            qDebug() << "name---------------: " << name<<" "<<bufferName;
             // only in central header ! see below.
             // length of extra attributes
             int extralen = (uchar)buffer[31] << 8 | (uchar)buffer[30];
